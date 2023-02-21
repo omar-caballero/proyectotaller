@@ -19,7 +19,7 @@ use App\Models\Internamiento;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
 
 
