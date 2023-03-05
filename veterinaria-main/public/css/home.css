@@ -35,7 +35,7 @@
 	font-size: 12px;
 }
 .slide-home{
-	background-image: url(../img/inicio/slider-2.jpg);
+	background-image: url(../img/inicio/slider.jpg);
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -118,6 +118,20 @@
 	text-align: justify;
 
 }
+.home6{
+	background-image: url(../img/inicio/home6.jpg);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.home6 h6{
+	color: white;
+	font-size: 18px;
+	text-align: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
 
 
 @media(min-width: 768px){

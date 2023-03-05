@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Plantilla Café</title>
+    <title>Clínica veterinaria "Patitas"</title>
+    <link rel="icon" type="image/jpg" href="images/logo.jpg">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/general.css')}}">
-    <link rel="stylesheet" href="{{asset('css/library/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('css/library/hover.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture|Lato|Montserrat|PT+Sans|Patrick+Hand|Playfair+Display:700|Poor+Story|Slabo+27px" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheet/m.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheet/news.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="stylesheet/carausel.css">
     
     @yield('styles')
 </head>
@@ -25,26 +31,31 @@
         <div class="row align-items-center col-12 col-xl-11 mx-auto">
             <div class="col-auto text-center">
                 <a class="" href="{{url('home')}}">
-                    <img class="img-fluid img-logo" src="{{asset('img/inicio/logo-2.jpg')}}" alt="">
+                    <img class="img-fluid img-logo" src="{{asset('img/logo.png')}}" alt="">
                 </a>
             </div>
-            <div class="col">
-                <ul class="nav nav-fill justify-content-end nav-menu">
-                    {{-- <a class="borde-menu-header">|</a> --}}
+            <div class="col ">
+                <div class="d-none d-md-block">
+                <ul class="nav nav-fill  justify-content-end nav-menu menuflex">
+                    
 
-                    <a class="nav-link {{ (request()->is('home')) ? 'nav-link-activo' : '' }}" href="{{url('home')}}">Inicio</a>
+                    <a class="nav-link " href="{{url('home')}}">Inicio</a>
                     
-                    <a class="nav-link {{ (request()->is('nosotros')) ? 'nav-link-activo' : '' }}" href="{{url('nosotros')}}">Nosotros</a>
-                    
-                    <a class="nav-link {{ (request()->is('catalogo') || Request::route()->getName() == 'client.productDetail')  ? 'nav-link-activo' :'' }}" href="{{url('catalogo')}}">Catálogo</a>
+                    <a class="nav-link" href="{{url('nosotros')}}">Nosotros</a>
+
+                    <a class="nav-link" href="{{url('clientes')}}">Clientes</a>
+
+                    <a class="nav-link" href="{{url('servicios')}}">Servicios</a>
                     
 
                     {{-- <a class="borde-menu-header">|</a> --}}
                 </ul>
+                </div>
                 <button class="btn btn-light btn-abrir-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
                     <i class="bi bi-list"></i>
                 </button>
             </div>
+            
         </div>          
     </header>
 
@@ -84,63 +95,29 @@
                 <li class="nav-item">
                     <a
                         class="
-                            nav-link                                    
+                            nav-link
                             text-center 
                             offcanvas-enlace
-                            {{ (request()->is('catalogo') || Request::route()->getName() == 'client.productDetail') ? 'offcanvas-enlace-activo' :'' }}
+                            {{ (request()->is('clientes')) ? 'offcanvas-enlace-activo' :'' }}
                         "
                         style="font-size: 1.5rem"
-                        href="{{url('catalogo')}}"
-                        >Catálogo</a
+                        href="{{url('clientes')}}"
+                        >Clientes</a
                     >
                 </li>
                 <li class="nav-item">
                     <a
                         class="
-                            nav-link
+                            nav-link                                
                             text-center 
-                            offcanvas-enlace
-                            {{ (request()->is('procesos')) ? 'offcanvas-enlace-activo' :'' }}
+                            offcanvas-enlace                                   
+                            {{ (request()->is('servicios')) ? 'offcanvas-enlace-activo' :'' }}
                         "
                         style="font-size: 1.5rem"
-                        href="{{url('procesos')}}"
-                        >Procesos</a
+                        href="{{url('servicios')}}"
+                        >Servicios</a
                     >
                 </li>
-                <li class="nav-item">
-                    <a
-                        class="
-                            nav-link
-                            text-center 
-                            offcanvas-enlace
-                            {{ (request()->is('galeria')) ? 'offcanvas-enlace-activo' :'' }}
-                        "
-                        style="font-size: 1.5rem"
-                        href="{{url('galeria')}}"
-                        >Galería</a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a
-                        class="
-                            nav-link
-                            text-center 
-                            offcanvas-enlace
-                            {{ (request()->is('contactenos')) ? 'offcanvas-enlace-activo' :'' }}
-                        "
-                        style="font-size: 1.5rem"
-                        href="{{url('contactenos')}}"
-                        >Contacto</a
-                    >
-                </li>
-                <div class="off-canvas-contenedor-rs d-flex justify-content-center mt-4">
-                    {{-- <a href="#" class="nav-icono-rp me-3">
-                        <img src="{{asset('img/inicio/facebook.svg')}}" alt="">
-                    </a>
-                    <a href="#" class="nav-icono-rp">
-                        <img src="{{asset('img/inicio/instagram.svg')}}" alt="">
-                    </a> --}}
-                </div>
             </ul>
         </div>
     </div>
@@ -149,7 +126,7 @@
         @yield('content')
     </main>
 
-    <footer>
+    <!--<footer>
         <div class="col-12 col-md-10 mx-auto">
             <p>
                 <span>Telf: (511) 758 9635</span> <br class="d-md-none">
@@ -160,14 +137,12 @@
                 <a class="hvr-grow-shadow" target="_blank" href="https://agenciahdc.com"><small>Diseñado por Agencia HDC</small></a>
             </p>
         </div>
-    </footer>
+    </footer>-->
 
     <!-- JavaScript Bundle with Popper -->
     <script src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="{{asset('js/jquery.scrollflow.min.js')}}"></script>
-
-    @livewireScripts
     @stack('scripts')
 </body>
 

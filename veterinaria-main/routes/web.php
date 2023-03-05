@@ -18,8 +18,23 @@ use App\Models\Internamiento;
 |
 */
 
+Route::get('/home', function () {
+    return view('pages.home');
+});
 Route::get('/', function () {
     return view('pages.home');
+});
+
+Route::get('/nosotros', function () {
+    return view('pages.nosotros');
+});
+
+Route::get('/clientes', function () {
+    return view('pages.clientes');
+});
+
+Route::get('/servicios', function () {
+    return view('pages.servicios');
 });
 
 
@@ -32,6 +47,6 @@ Route::resource('/internamiento', InternamientoController::class)->middleware('a
 
 Auth::routes();
 
-Route::get('/home', function(){return view('welcome');});
+Route::get('/admin', function(){return view('welcome');});
 
 Route::get('/exportar', [InternamientoController::class,'exportar'])->name('exportar')->middleware('auth');
